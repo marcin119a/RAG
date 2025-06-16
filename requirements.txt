@@ -11,3 +11,4 @@ torch
 pandas
 python-dotenv
 langchain-chroma
+openai

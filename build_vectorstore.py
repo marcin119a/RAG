@@ -20,7 +20,8 @@ for file in os.listdir(output_folder):
 print(f"Loaded {len(docs)} documents from '{output_folder}'")
 
 # 3. Split documents into chunks
-splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
+chunk_size = int(os.getenv("CHUNK_SIZE", 500))  # Default to 500 if not set
+splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=50)
 chunks = splitter.split_documents(docs)
 
 print(f"Split into {len(chunks)} chunks.")
@@ -28,6 +29,5 @@ print(f"Split into {len(chunks)} chunks.")
 # 4. Generate embeddings and build vector DB
 embedding = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 vectordb = Chroma.from_documents(chunks, embedding, persist_directory="./chroma_index")
-vectordb.persist()
 
 print("Vectorstore built and saved in './chroma_index'")

@@ -1,4 +1,3 @@
-import os
 from dotenv import load_dotenv
 import gradio as gr
 from langchain_chroma import Chroma
