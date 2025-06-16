@@ -8,5 +8,5 @@ services:
     env_file:
       - .env
     volumes:
-      - ./adresowo_descriptions:/app/${OUTPUT_FOLDER}
+      - ./adresowo_descriptions:/app/adresowo_descriptions
     command: ./start.sh
