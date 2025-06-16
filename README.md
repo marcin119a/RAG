@@ -54,3 +54,13 @@ Visit:
 ```
 http://localhost:7860
 ```
+
+### Recommended: Detached mode (run in background)
+```
+docker-compose up -d --build
+```
+
+### Access container shell
+```
+docker exec -it rag-rag-app-1 /bin/bash
+```
